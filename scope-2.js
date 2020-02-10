@@ -1,0 +1,20 @@
+// Global (name)
+  // Local (name)
+    // Local
+  // Local
+
+
+// let name = 'Andrew'
+
+if (true) {
+  // let name = 'Mike'
+
+  if (true) {
+    name = 'Jen'  // Leaked Global!
+    console.log(name)
+  }
+}
+
+if (true) {
+  console.log(name)
+}
