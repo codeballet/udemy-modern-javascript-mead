@@ -1,22 +1,42 @@
-const todos = [
-  'Learn JavaScript', 
-  'Let the dogs out', 
-  'Write the dance syllabus',
-  'Check the Taobao deliveries',
-  'Talk to Gary'
-]
+const todos = [{
+  text: 'Learn JavaScript',
+  completed: false
+}, {
+  text: 'Let the dogs out',
+  completed: false
+}, {
+  text: 'Write the dance syllabus',
+  completed: false
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Check the Taobao deliveries',
+  completed: true
+}, {
+  text: 'Talk to Gary',
+  completed: false
+}]
 
-todos.splice(2, 1)
-todos.push('This is the last thing to do')
-todos.shift()
+console.log(todos)
 
-console.log(`You have ${todos.length} todos`)
+const deleteTodo = function (todos, text) {
+  index = todos.findIndex(function(todo) {
+    return todo.text.toLowerCase() === text.toLowerCase()
+  })
 
-// Passing a function into a function: callback!
-todos.forEach(function (todo, index) {
-  console.log(`${index + 1}. ${todo}`)
-})
-
-for (let count = 0; count < todos.length; count++) {
-  console.log(`${count + 1}. ${todos[count]}`)
+  if (index > -1) {
+    todos.splice(index, 1)
+  }
 }
+
+const getThingsToDo = function (todos) {
+  return todos.filter(function (todo) {
+    return !todo.completed
+  })
+}
+
+console.log(getThingsToDo(todos))
+
+// deleteTodo(todos, 'buy food')
+// console.log(todos)
