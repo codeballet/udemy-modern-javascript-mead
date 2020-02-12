@@ -11,4 +11,8 @@ todos.push('This is the last thing to do')
 todos.shift()
 
 console.log(`You have ${todos.length} todos`)
-console.log(todos)
+
+// Passing a function into a function: callback!
+todos.forEach(function (todo, index) {
+  console.log(`${index + 1}. ${todo}`)
+})
