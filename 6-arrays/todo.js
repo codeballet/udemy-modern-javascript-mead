@@ -3,19 +3,19 @@ const todos = [{
   completed: false
 }, {
   text: 'Let the dogs out',
-  completed: false
+  completed: true
 }, {
   text: 'Write the dance syllabus',
   completed: false
 }, {
   text: 'Buy food',
-  completed: true
+  completed: false
 }, {
   text: 'Check the Taobao deliveries',
   completed: true
 }, {
   text: 'Talk to Gary',
-  completed: false
+  completed: true
 }]
 
 console.log(todos)
@@ -36,7 +36,20 @@ const getThingsToDo = function (todos) {
   })
 }
 
-console.log(getThingsToDo(todos))
+const sortTodos = function (todos) {
+  todos.sort(function(a, b) {
+    if (!a.completed && b.completed) {
+      return -1
+    } else if (a.completed && !b.completed) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+}
 
+sortTodos(todos)
+
+// console.log(getThingsToDo(todos))
 // deleteTodo(todos, 'buy food')
-// console.log(todos)
+console.log(todos)
