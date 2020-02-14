@@ -18,8 +18,6 @@ const todos = [{
   completed: true
 }]
 
-// You have 2 todos left (p element)
-// Add a p for each todo above (use text value)
 
 const incompleteTodos = todos.filter(function (todo) {
   return !todo.completed
@@ -34,4 +32,9 @@ todos.forEach(function (todo) {
   const p = document.createElement('p')
   p.textContent = todo.text
   document.querySelector('body').appendChild(p)
+})
+
+// Listen for new todo creation
+document.querySelector('#add-todo').addEventListener('click', function () {
+  console.log('New Todo button was clicked')
 })

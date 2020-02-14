@@ -9,22 +9,23 @@ const notes = [{
   body: 'Get a new seat'
 }]
 
-// DOM - Document Object Model
-
-// Query and remove
-// const p = document.querySelector('p')
-// p.remove()
-
-// Query all and remove
-const ps = document.querySelectorAll('p')
-
-ps.forEach(function (p) {
-  p.textContent = '******'
-  // console.log(p.textContent)
-  // p.remove()
+document.querySelector('#create-note').addEventListener('click', function (e) {
+  e.target.textContent = 'The button was clicked!'
 })
 
-// Add a new element
-const newParagraph = document.createElement('p')
-newParagraph.textContent = 'This is a new element from JavaScript'
-document.querySelector('body').appendChild(newParagraph)
+document.querySelector('#remove-all').addEventListener('click', function () {
+  document.querySelectorAll('.note').forEach(function (note) {
+    note.remove()
+  })
+})
+
+// -- Single --
+// p
+// #replace
+// .item
+
+// -- Multiple --
+// p#order
+// button.inventory
+// h1#title.application
+// h1.application#title
