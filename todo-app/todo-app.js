@@ -1,28 +1,13 @@
-const todos = [{
-  text: 'Learn JavaScript',
-  completed: false
-}, {
-  text: 'Let the dogs out',
-  completed: true
-}, {
-  text: 'Write the dance syllabus',
-  completed: false
-}, {
-  text: 'Buy food',
-  completed: false
-}, {
-  text: 'Check the Taobao deliveries',
-  completed: true
-}, {
-  text: 'Talk to Gary',
-  completed: true
-}]
+let todos = []
 
-
-// Filters
 const filters = {
   searchText: '',
   hideCompleted: false
+}
+
+const todosJSON = localStorage.getItem('todos')
+if (todosJSON !== null) {
+  todos = JSON.parse(todosJSON)
 }
 
 // Render Todos list based on filters
@@ -64,6 +49,7 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
     text: e.target.elements.todoText.value,
     completed: false
   })
+  localStorage.setItem('todos', JSON.stringify(todos))
   renderTodos(todos, filters)
   e.target.elements.todoText.value = ''
 })
