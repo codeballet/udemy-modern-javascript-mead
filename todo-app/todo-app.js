@@ -75,8 +75,3 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
 
 // Function initiators
 renderTodos(todos, filters)
-
-// 1. Create a checkbox an setup event listener -> "Hide completed"
-// 2. Create new hideCompleted filter (default false)
-// 3. Update hideCompleted and rerender list on checkbox change
-// 4. Setup renderTodos to remove completed items
