@@ -1,3 +1,5 @@
+console.log(uuidv4())
+
 // Fetch existing todos from localStorage
 const getSavedTodos = function () {
   const todosJSON = localStorage.getItem('todos')
