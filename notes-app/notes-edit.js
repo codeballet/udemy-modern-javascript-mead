@@ -4,9 +4,7 @@ const dateElement = document.querySelector('#last-edited')
 const removeElement = document.querySelector('#remove-note')
 const noteId = location.hash.substring(1)
 let notes = getSavedNotes()
-let note = notes.find(function (note) {
-  return note.id == noteId
-})
+let note = notes.find((note) => note.id == noteId)
 
 if (note === undefined) {
   location.assign('/index.html')
@@ -18,7 +16,7 @@ bodyElement.value = note.body
 dateElement.textContent = generateLastEdited(note.updatedAt)
 
 // Setup input and update for note title, save notes array
-titleElement.addEventListener('input', function (e) {
+titleElement.addEventListener('input', (e) => {
   note.title = e.target.value
   note.updatedAt = moment().valueOf()
   dateElement.textContent = generateLastEdited(note.updatedAt)
@@ -26,7 +24,7 @@ titleElement.addEventListener('input', function (e) {
 })
 
 // Setup input and update for note body, save notes array
-bodyElement.addEventListener('input', function (e) {
+bodyElement.addEventListener('input', (e) => {
   note.body = e.target.value
   note.updatedAt = moment().valueOf()
   dateElement.textContent = generateLastEdited(note.updatedAt)
@@ -34,19 +32,17 @@ bodyElement.addEventListener('input', function (e) {
 })
 
 // Setup remove-note button and redirect to index page
-removeElement.addEventListener('click', function () {
+removeElement.addEventListener('click', () => {
   removeNote(noteId)
   saveNotes(notes)
   location.assign('/index.html')
 })
 
 // Update other open windows when storage changes
-window.addEventListener('storage', function (e) {
+window.addEventListener('storage', (e) => {
   if (e.key === 'notes') {
     notes = JSON.parse(e.newValue)
-    let note = notes.find(function (note) {
-      return note.id == noteId
-    })
+    let note = notes.find((note) => note.id == noteId)
     
     if (note === undefined) {
       location.assign('/index.html')
