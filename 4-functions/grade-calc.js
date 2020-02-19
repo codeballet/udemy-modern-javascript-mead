@@ -3,8 +3,8 @@
 // A 90-100, B 80-89, C 70-79, D 60-69, F 0-59
 
 const gradeCalc = function (studentScore, totalScore) {
-  if (!studentScore || !totalScore) {
-    return 'You must provide both the student score and the total possible score!'
+  if (typeof studentScore !== 'number' || typeof totalScore !== 'number') {
+    throw Error('Please provide numbers only')
   }
 
   const percent = 100 * studentScore / totalScore
@@ -25,5 +25,11 @@ const gradeCalc = function (studentScore, totalScore) {
   return `You got an ${letterGrade} (${percent}%).`
 }
 
-const result = gradeCalc(13, 20)
-console.log(result)
+
+
+try {
+  const result = gradeCalc(70, 100)
+  console.log(result)
+} catch (e) {
+  console.log(e.message)
+}
