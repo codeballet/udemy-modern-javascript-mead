@@ -2,6 +2,30 @@ const Hangman = function (word, remainingGuesses) {
   this.word = word.toLowerCase().split('')
   this.remainingGuesses = remainingGuesses
   this.guessedLetters = []
+  this.status = 'playing'
+}
+
+Hangman.prototype.setStatus = function () {
+  const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+
+  if (this.remainingGuesses === 0) {
+    this.status = 'failed'
+  } else if (finished) {
+    this.status = 'finished'
+  } else {
+    this.status = 'playing'
+  }
+
+  // My own solution, also works
+  // puzzle = this.getPuzzle()
+
+  // if (puzzle === this.word.join('')) {
+  //   this.status = 'finished'
+  // }
+
+  // if (this.remainingGuesses === 0) {
+  //   this.status = 'failed'
+  // }
 }
 
 Hangman.prototype.getPuzzle = function () {
@@ -26,16 +50,5 @@ Hangman.prototype.makeGuess = function (guess) {
   if (isUnique && isBadGuess) {
     this.remainingGuesses--
   }
+   this.setStatus()
 }
-
-const game1 = new Hangman('cat', 2)
-
-console.log(game1.getPuzzle())
-console.log(game1.remainingGuesses)
-
-window.addEventListener('keypress', function (e) {
-  const guess = String.fromCharCode(e.charCode)
-  game1.makeGuess(guess)
-  console.log(game1.getPuzzle())
-  console.log(game1.remainingGuesses)
-})
