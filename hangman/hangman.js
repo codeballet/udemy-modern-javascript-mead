@@ -1,68 +1,59 @@
-const Hangman = function (word, remainingGuesses) {
-  this.word = word.toLowerCase().split('')
-  this.remainingGuesses = remainingGuesses
-  this.guessedLetters = []
-  this.status = 'playing'
-}
-
-Hangman.prototype.setStatus = function () {
-  const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
-
-  if (this.remainingGuesses === 0) {
-    this.status = 'failed'
-  } else if (finished) {
-    this.status = 'finished'
-  } else {
+class Hangman {
+  constructor(word, remainingGuesses) {
+    this.word = word.toLowerCase().split('')
+    this.remainingGuesses = remainingGuesses
+    this.guessedLetters = []
     this.status = 'playing'
   }
 
-  // My own solution, also works
-  // puzzle = this.getPuzzle()
+  setStatus() {
+    const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
 
-  // if (puzzle === this.word.join('')) {
-  //   this.status = 'finished'
-  // }
-
-  // if (this.remainingGuesses === 0) {
-  //   this.status = 'failed'
-  // }
-}
-
-Hangman.prototype.getStatusMessage = function () {
-  if (this.status === 'playing') {
-    return `Guesses left: ${this.remainingGuesses}`
-  } else if (this.status === 'finished') {
-    return 'Great work! You guessed the word.'
-  } else {
-    return `Nice try! The word was "${this.word.join('')}"`
+    if (this.remainingGuesses === 0) {
+      this.status = 'failed'
+    } else if (finished) {
+      this.status = 'finished'
+    } else {
+      this.status = 'playing'
+    }
   }
-}
 
-Hangman.prototype.getPuzzle = function () {
-  let puzzle = ''
-
-  this.word.forEach((letter) => {
-    this.guessedLetters.includes(letter) || letter === ' ' ? puzzle += letter : puzzle += '*'
-  })
-
-  return puzzle
-}
-
-Hangman.prototype.makeGuess = function (guess) {
-  guess = guess.toLowerCase()
-  const isUnique = !this.guessedLetters.includes(guess)
-  const isBadGuess = !this.word.includes(guess)
-
-  if (this.status !== 'playing') {
-    return
+  getStatusMessage() {
+    if (this.status === 'playing') {
+      return `Guesses left: ${this.remainingGuesses}`
+    } else if (this.status === 'finished') {
+      return 'Great work! You guessed the word.'
+    } else {
+      return `Nice try! The word was "${this.word.join('')}"`
+    }
   }
+
+  getPuzzle() {
+    let puzzle = ''
+
+    this.word.forEach((letter) => {
+      this.guessedLetters.includes(letter) || letter === ' ' ? puzzle += letter : puzzle += '*'
+    })
   
-  if (isUnique) {
-    this.guessedLetters.push(guess)
+    return puzzle
   }
 
-  if (isUnique && isBadGuess) {
-    this.remainingGuesses--
+  makeGuess(guess) {
+    guess = guess.toLowerCase()
+    const isUnique = !this.guessedLetters.includes(guess)
+    const isBadGuess = !this.word.includes(guess)
+  
+    if (this.status !== 'playing') {
+      return
+    }
+    
+    if (isUnique) {
+      this.guessedLetters.push(guess)
+    }
+  
+    if (isUnique && isBadGuess) {
+      this.remainingGuesses--
+    }
+    this.setStatus()
   }
-  this.setStatus()
 }
