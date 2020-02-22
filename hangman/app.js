@@ -1,6 +1,6 @@
 const puzzleEl = document.querySelector('#puzzle')
 const statusMessageEl = document.querySelector('#status-message')
-const game1 = new Hangman('cat', 2)
+const game1 = new Hangman('car parts', 2)
 
 puzzleEl.textContent = game1.puzzle
 statusMessageEl.textContent = game1.statusMessage
