@@ -12,21 +12,17 @@ window.addEventListener('keypress', (e) => {
   statusMessageEl.textContent = game1.statusMessage
 })
 
-getPuzzle('4', (error, puzzle) => {
-  if (error) {
-    console.log(`Error: ${error}`)
-  } else {
-    console.log(puzzle)
-  }
+getPuzzle('4').then((puzzle) => {
+  console.log(puzzle)
+}, (err) => {
+  console.log(`Error: ${err}`)
 })
 
 
 const countryCode = 'SE'
 
-getCountry(countryCode, (error, country) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(`Country name: ${country}`)
-  }
+getCountry(countryCode).then((country) => {
+  console.log(country.name)
+}, (err) => {
+  console.log(`Error: ${err}`)
 })
