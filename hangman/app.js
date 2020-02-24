@@ -18,11 +18,16 @@ getPuzzle('4').then((puzzle) => {
   console.log(`Error: ${err}`)
 })
 
-
-getLocation().then((location) => {
-  return getCountry(location.country)
-}).then((country) => {
-  console.log(`You are in ${country.name}`)
+getCurrentCountry().then((country) => {
+  console.log(country.name)
 }).catch((err) => {
-  console.log(`Error: ${err}`)
+  console.log(err)
 })
+
+// getLocation().then((location) => {
+//   return getCountry(location.country)
+// }).then((country) => {
+//   console.log(`You are in ${country.name}`)
+// }).catch((err) => {
+//   console.log(`Error: ${err}`)
+// })
