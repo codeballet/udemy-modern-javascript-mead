@@ -14,15 +14,15 @@ window.addEventListener('keypress', (e) => {
 
 getPuzzle('4').then((puzzle) => {
   console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
   console.log(`Error: ${err}`)
 })
 
 
-const countryCode = 'SE'
-
-getCountry(countryCode).then((country) => {
-  console.log(country.name)
-}, (err) => {
+getLocation().then((location) => {
+  return getCountry(location.country)
+}).then((country) => {
+  console.log(`You are in ${country.name}`)
+}).catch((err) => {
   console.log(`Error: ${err}`)
 })
