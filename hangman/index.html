@@ -2,12 +2,16 @@
 
 <html>
   <head>
+    <title>Hangman</title>
     <link href="/styles/styles.css" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.png">
   </head>
   <body>
-    <p id="puzzle"></p>
-    <p id="status-message" class="warning"></p>
-    <button id="reset" class="warning">Reset</button>
+    <div>
+      <div id="puzzle" class="puzzle"></div>
+      <p id="status-message"></p>
+      <button id="reset" class="button">Reset</button>
+    </div>
     <script src="/scripts/requests.js"></script>
     <script src="/scripts/hangman.js"></script>
     <script src="/scripts/app.js"></script>
