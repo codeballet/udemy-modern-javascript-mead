@@ -1,33 +1,36 @@
 const puzzleEl = document.querySelector('#puzzle')
 const statusMessageEl = document.querySelector('#status-message')
-const game1 = new Hangman('car parts', 2)
-
-puzzleEl.textContent = game1.puzzle
-statusMessageEl.textContent = game1.statusMessage
+let game1
 
 window.addEventListener('keypress', (e) => {
   const guess = String.fromCharCode(e.charCode)
   game1.makeGuess(guess)
+  render()
+})
+
+const render = () => {
   puzzleEl.textContent = game1.puzzle
   statusMessageEl.textContent = game1.statusMessage
-})
+}
 
-getPuzzle('4').then((puzzle) => {
-  console.log(puzzle)
-}).catch((err) => {
-  console.log(`Error: ${err}`)
-})
+const startGame = async () => {
+  const puzzle = await getPuzzle('2')
+  game1 = new Hangman(puzzle, 5)
+  render()
+}
 
-getCurrentCountry().then((country) => {
-  console.log(country.name)
-}).catch((err) => {
-  console.log(err)
-})
+document.querySelector('#reset').addEventListener('click', startGame)
 
-// getLocation().then((location) => {
-//   return getCountry(location.country)
-// }).then((country) => {
-//   console.log(`You are in ${country.name}`)
+startGame()
+
+// getPuzzle('4').then((puzzle) => {
+//   console.log(puzzle)
 // }).catch((err) => {
 //   console.log(`Error: ${err}`)
+// })
+
+// getCurrentCountry().then((country) => {
+//   console.log(country.name)
+// }).catch((err) => {
+//   console.log(err)
 // })
