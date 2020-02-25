@@ -2,21 +2,38 @@
 
 <html>
   <head>
-
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" href="/images/favicon.png">
   </head>
   <body>
-    <h1>Todos</h1>
-    <input id="search-todos" type="text" placeholder="Search todos">
-    <label>
-      <input id="hide-completed" type="checkbox"> Hide Completed
-    </label>
-    <div id="todos"></div>
-    <form id="new-todo">
-      <input type="text" placeholder="Something to do" name="todoText">
-      <button>Add Todo</button>
-    </form>
-    <script src="uuidv4.js"></script>
-    <script src="todo-functions.js"></script>
-    <script src="todo-app.js"></script>
+
+    <div class="header">
+      <div class="container">
+        <h1 class="header__title">Todo App</h1>
+        <h2 class="header__subtitle">What do you need to to?</h2>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="actions__container">
+        <input id="search-todos" class="input" type="text" placeholder="Search todos">
+        <label class="checkbox">
+          <input id="hide-completed" type="checkbox"> Hide Completed
+        </label>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="todos"></div>
+      <form id="new-todo">
+        <input type="text" class="input" placeholder="Something to do" name="todoText">
+        <button class="button">Add Todo</button>
+      </form>
+    </div>
+
+    <script src="/scripts/uuidv4.js"></script>
+    <script src="/scripts/todo-functions.js"></script>
+    <script src="/scripts/todo-app.js"></script>
   </body>
 </html>

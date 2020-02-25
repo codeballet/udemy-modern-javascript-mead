@@ -17,14 +17,20 @@ document.querySelector('#search-todos').addEventListener('input', (e) => {
 
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
   e.preventDefault()
-  todos.push({
-    id: uuidv4(),
-    text: e.target.elements.todoText.value,
-    completed: false
-  })
-  saveTodos(todos)
-  renderTodos(todos, filters)
-  e.target.elements.todoText.value = ''
+  const cleanText = e.target.elements.todoText.value.trim()
+
+  if (cleanText.length > 0) {
+    todos.push({
+      id: uuidv4(),
+      text: cleanText,
+      completed: false
+    })
+    saveTodos(todos)
+    renderTodos(todos, filters)
+    e.target.elements.todoText.value = ''
+  } else {
+
+  }
 })
 
 document.querySelector('#hide-completed').addEventListener('change', (e) => {
