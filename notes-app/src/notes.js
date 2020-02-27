@@ -1,5 +1,3 @@
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
 
@@ -34,6 +32,8 @@ const createNote = () => {
     body: ''
   })
   saveNotes()
+
+  return id
 }
 
 // Remove a note from the list
@@ -101,6 +101,7 @@ const updateNote = (id, updates) => {
   }
 
   saveNotes()
+  return note
 }
 
 notes = loadNotes()
