@@ -29,3 +29,35 @@ let cities = ['Barcelone', 'Cape Town', 'Bordeuax']
 cities = ['Stockholm', ...cities]
 
 console.log(cities)
+
+let house = {
+  bedrooms: 2,
+  bathrooms: 1.5,
+  yearBuilt: 2017
+}
+
+let newHouse = {
+  basement: true,
+  ...house,
+  bedrooms: 3
+}
+
+console.log(house)
+console.log(newHouse)
+
+let person = {
+  name: 'Johan',
+  age: 42
+}
+
+let location = {
+  city: 'London',
+  country: 'UK'
+}
+
+let overview = {
+  ...person,
+  ...location
+}
+
+console.log(overview)
